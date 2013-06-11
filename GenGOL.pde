@@ -20,7 +20,7 @@
  * T     - Start with a 40x40 centered square randomized using population density.
  * x     - swap dead and live cell colors.   bj
  * !     - Enter debug mode. (After which mouse clicks report info.) 
- * z     - (Experimental) spawn new rules based on crossover (misnomer here) with self and possible mutation. 
+ * z     - (Experimental) spawn new rules based on random rotations and mutation. 
  * 
  */
  
