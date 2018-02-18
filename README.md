@@ -20,6 +20,6 @@ Generalized version of Conway's Game of Life (cellular automata) built in proces
            Range is 0-10. Can help determine period of some blinkers, etc. 
  * t     - Start with a single cell in the middle of the world. 
  * T     - Start with a 40x40 centered square randomized using population density.
- * x     - swap dead and live cell colors.   bj
+ * x     - swap dead and live cell colors. 
  * !     - Enter debug mode. (After which mouse clicks report info.) 
  * z     - (Experimental) spawn new rules based on random rotations and mutation. 
