@@ -116,7 +116,8 @@ void load_demo_file() {
 }
 
 void setup() {
-  size(set_width, set_height, P2D);  
+  //size(set_width, set_height, P2D);
+  size(640, 480, P2D);
   load_demo_file(); 
 
   rules = new CARules(CARules.SYMMETRY_NONE); 
@@ -324,6 +325,3 @@ void mouseReleased() {
   rules.debug(world[x][y], b);  
   noLoop();
 }
-
-
-
