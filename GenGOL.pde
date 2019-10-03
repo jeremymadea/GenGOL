@@ -39,8 +39,10 @@ int world_height = set_height / cell_size;
 int population_density = 25; // default pd
 int rule_density = 50; 
 int skip_iters = 0; 
-int dead = 0; 
-int live = 255; 
+boolean constant_mutation = false;
+int mutation_probability = 50;
+int dead = 0;   // Color of dead cells
+int live = 255; // Color of live cells
 
 CADemo[] ca_demos; 
 
@@ -48,6 +50,14 @@ void randomize_world(int density) {
   for (int x=0; x<world_width; x++) {
     for (int y=0; y<world_height; y++) {
       world[x][y] = density > random(100) ? 1 : 0; 
+    }
+  }
+}
+
+void mutate_world(int prob) { 
+  for (int x=0; x<world_width; x++) { 
+    for (int y=0; y<world_height; y++) {
+      world[x][y] = prob > random(100) ? abs(world[x][y] - 1) : world[x][y];
     }
   }
 }
@@ -160,6 +170,9 @@ void draw() {
   for (int k=0; k < skip_iters; k++) {
     iterate(); 
   }
+  if (constant_mutation) { 
+    mutate_world(mutation_probability); 
+  }
   background(0);
   //stroke(64);
   noStroke();
@@ -239,7 +252,14 @@ void keyPressed() {
     randomize_world(population_density);
   } else if (key == 'R') {
     rules.randomize(rule_density);
-    
+  } else if (key == '<' || key == ',') { 
+    mutation_probability = (mutation_probability - 1) % 101 ;
+  } else if (key == '>' || key == '.') {
+    mutation_probability = (mutation_probability + 1) % 101 ;
+  } else if (key == 'm'){
+    mutate_world(mutation_probability); 
+  } else if (key == 'M') {
+    constant_mutation = !constant_mutation;
   } else if (key == 'p') { // Pause
     if (looping) { noLoop(); } else { loop(); }
     
