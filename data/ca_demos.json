@@ -38,7 +38,7 @@
     "skip": 0, 
     "pd": 98, 
     "init": 0, 
-    "comment": "Interesting at PDs of high 90s and below 10. Others converge to running pd of 60. - JM" 
+    "comment": "Interesting at PDs of high 90s and below 10. Others converge to running pd of 60. Sensitive to mutation (phases.)- JM" 
   },
   {
     "A": "000100000000000000000100000100",
@@ -70,7 +70,7 @@
     "skip": 1, 
     "pd": 7, 
     "init": 0,
-    "comment": "Stable but interesting. - JM"
+    "comment": "Stable but interesting. Interesting with mutations (increase them then decrease while constant mutation is on. - JM"
   }, 
   {
     "A": "100000100000000000100000001100",

@@ -254,8 +254,10 @@ void keyPressed() {
     rules.randomize(rule_density);
   } else if (key == '<' || key == ',') { 
     mutation_probability = (mutation_probability - 1) % 101 ;
+    println("MP: " + mutation_probability);
   } else if (key == '>' || key == '.') {
     mutation_probability = (mutation_probability + 1) % 101 ;
+    println("MP: " + mutation_probability);
   } else if (key == 'm'){
     mutate_world(mutation_probability); 
   } else if (key == 'M') {
