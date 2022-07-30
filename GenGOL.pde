@@ -88,7 +88,7 @@ void single_cell_world() {
 // The following two functions are used to treat the world as a torus. 
 int xcoord(int x) {
   if (x < 0) { return x + world_width; } 
-  if (x >= world_width ) { return x -= world_width; }
+  if (x >= world_width ) { return x - world_width; }
   return x; 
 }
 

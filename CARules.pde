@@ -53,7 +53,7 @@ class CARules
   int compiled_rules_b[] = new int[256]; 
   
   CARules(int family) {
-   set_symmetry(family); 
+    set_symmetry(family); 
   }
 
   void set_symmetry(int family) 
