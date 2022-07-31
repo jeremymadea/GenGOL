@@ -93,6 +93,14 @@ class CARules
     println( "\""  + join(nf(rule_set_b, 0), "").substring(0, number_of_rules) + "\"}");
   }
   
+  void print_rule_set_json() 
+  {
+    println("    \"A\": \"" 
+             + join(nf(rule_set_a, 0), "").substring(0, number_of_rules) + "\",");
+    println("    \"B\": \"" 
+             + join(nf(rule_set_b, 0), "").substring(0, number_of_rules) + "\",");
+  }
+  
   void load_rules(String rules[]) 
   { 
     if (rules[0].length() != number_of_rules) {

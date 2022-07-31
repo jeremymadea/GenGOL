@@ -4,7 +4,7 @@
  * Keystroke commands: 
  * space - pick a new random rule set and randomize the world with the current 
  *         population density. 
- * c     - print the current settings. 
+ * v     - print the current rule/settings in saveable format. 
  * C     - print the current running cell population density. 
  * W,w   - reduce the population density by 10 or 1% and randomize the world. 
  * E,e   - increase the population density by 10 or 1% and randomize the world.
@@ -251,6 +251,7 @@ void keyPressed() {
   } else if (key == 'r') { 
     randomize_world(population_density);
   } else if (key == 'R') {
+    rules.set_symmetry(CARules.SYMMETRY_NONE);
     rules.randomize(rule_density);
   } else if (key == '<' || key == ',') { 
     mutation_probability = (mutation_probability - 1) % 101 ;
@@ -265,12 +266,17 @@ void keyPressed() {
   } else if (key == 'p') { // Pause
     if (looping) { noLoop(); } else { loop(); }
     
+  } else if (key == 'v') { 
+    println ("-- Current Settings --");
+    println('{');
+    rules.print_rule_set_json();
+    println("    \"skip\": " + skip_iters + ","); 
+    println("    \"pd\": " + population_density + ",");
+    println("    \"init\": 2,");
+    println("    \"comment\": \"\"");
+    println("}");
   } else if (key == 'c') { 
-    println ("-- Current Settings --"); 
-    rules.print_rule_set();
-    println("skip_iters: " + skip_iters); 
-    println("PD: " + population_density);
-
+    // 
   } else if (key == 'C') {
     int cpd = 0; 
     for (int x=0; x<world_width; x++) {
@@ -329,12 +335,12 @@ void mouseReleased() {
   b[6] = world[ xcoord(x-1) ][ ycoord(y+1) ]; 
   b[7] = world[ xcoord(x-1) ][ y           ];   
   println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"); 
-  println(  xcoord(x-1) + "," + ycoord(y-1) + "=" + b[0] + " "
-          + x           + "," + ycoord(y-1) + "=" + b[1] + " " 
-          + xcoord(x+1) + "," + ycoord(y-1) + "=" + b[2]);
+  println( xcoord(x-1) + "," + ycoord(y-1) + "=" + b[0] + " "
+         + x           + "," + ycoord(y-1) + "=" + b[1] + " " 
+         + xcoord(x+1) + "," + ycoord(y-1) + "=" + b[2]);
                
   println( xcoord(x-1) + "," + y           + "=" + b[7] + " "
-         + x           + "," + y           + "=" + world[x][y]  + " " 
+         + x           + "," + y           + "=" + world[x][y] + " " 
          + xcoord(x+1) + "," + y           + "=" + b[3]);
                
   println( xcoord(x-1) + "," + ycoord(y+1) + "=" + b[6] + " " 
